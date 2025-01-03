@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+:root{   
+    --fuente_regular:400;
+    --fuente_semibold:600;
+    --fuente_bold:700;
+
+    --fuente_tamanio_titulo_1:28px;
+    --fuente_tamanio_titulo_2:22px;
+    --fuente_tamanio_titulo_3:18px;
+    --fuente_tamanio_titulo_4:15px;
+
+    --color_azul_0:#0B1420;
+    --color_azul_-1:#26446D;
+    --color_azul_-2:#6590CA;
+
+    --color_negro:#1C1C1C;
+    --color_gris_1:#686868;
+    --color_gris_0:#B3B3B3;
+    --color_gris_-1:#DDDDDD;
+    --color_blanco:#F7F7F7;
+}
+
+
+*{
+    font-family: 'Poppins', sans-serif;
+    font-weight: var(--fuente_semibold);
+    margin:0;
+    padding:0;
+}
