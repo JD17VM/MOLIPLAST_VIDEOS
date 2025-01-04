@@ -1,0 +1,146 @@
+Tengo un problema muy grande, mi proyecto Remotion no recibe mi archivo input.json, se supone que al ejecutar
+
+Te pongo la estructura que tengo:
+
+/backend
+    server.js
+    input.json
+    package.json
+    package-lock.json
+    /node_modules
+    /moliplast_video_plantilla
+        remotion.config.js
+        package.json
+        package-lock.json
+        .prettierrc
+        .eslintrc
+        /node_modules
+        /public
+        /src
+            index.js
+            Root.jsx
+            /assets
+            /Producto_Unico
+                index.jsx
+                Producto.jsx
+
+
+
+--- codigo archivo: input.json
+
+[
+  { "enlace_imagen": "ruta/a/imagen1d.jpg", "texto": "Producto 1", "precio": "S/. 100.00" },
+  { "enlace_imagen": "ruta/a/imagen2d.jpg", "texto": "Producto 2", "precio": "S/. 200.00" },
+  { "enlace_imagen": "ruta/a/imagen3d.jpg", "texto": "Producto 3", "precio": "S/. 300.00" },
+  { "enlace_imagen": "ruta/a/imagen4d.jpg", "texto": "Producto 4", "precio": "S/. 400.00" }
+]
+
+--- codigo archivo: Root.jsx
+
+
+import { Composition } from 'remotion';
+import { Producto_Unico } from './Producto_Unico'; // Ajusta esta importación si está en otra ubicación
+
+export const RemotionRoot = () => {
+    return (
+        <>
+            <Composition
+                id="ProductoUnico" // Este ID debe coincidir con el comando de renderizado
+                component={Producto_Unico}
+                durationInFrames={2000}
+                fps={30}
+                width={1920}
+                height={1080}
+                defaultProps={{
+                  data: [
+
+                  ]
+              }} // Datos predeterminados
+            />
+        </>
+    );
+};
+
+
+--- codigo archivo: Producto.jsx
+
+
+import React from 'react';
+import { AbsoluteFill } from 'remotion';
+
+const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
+    // Aquí puedes mantener las transformaciones y animaciones
+    // (el código que ya tienes) para cada producto.
+    
+    // Ejemplo simplificado:
+    return (
+        <AbsoluteFill
+            style={{
+                backgroundColor: "white",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
+            <img
+                src={enlace_imagen}
+                alt="Producto"
+                style={{
+                    width: "300px",
+                    height: "300px",
+                    objectFit: "contain",
+                }}
+            />
+            <h1>{texto}</h1>
+            <h2>{precio}</h2>
+        </AbsoluteFill>
+    );
+};
+
+export { Producto };
+
+
+--- codigo archivo: index.jsx
+
+import { AbsoluteFill, Sequence, useCurrentFrame, useVideoConfig } from 'remotion';
+import { Producto } from './Producto'; 
+
+export const Producto_Unico = ({ data }) => {
+    const { fps } = useVideoConfig();
+
+
+    console.log('Datos recibidos en Producto_Unico:', data);
+
+    // Duración por producto
+    const entradaDuracion = 10;
+    const duracionVisible = 10 * fps;
+    const salidaDuracion = 10;
+    const descanso = 3 * fps;
+    const duracionPorProducto = entradaDuracion + duracionVisible + salidaDuracion + descanso;
+
+
+    
+
+    return (
+        <AbsoluteFill style={{ backgroundColor: 'white' }}>
+            {data.map((producto, index) => {
+                const offset = index * duracionPorProducto;
+                return (
+                    <Sequence
+                        key={index}
+                        from={offset}
+                        durationInFrames={duracionPorProducto}
+                    >
+                        <Producto
+                            enlace_imagen={producto.enlace_imagen}
+                            texto={producto.texto}
+                            precio={producto.precio}
+                            fps={fps}
+                        />
+                    </Sequence>
+                );
+            })}
+        </AbsoluteFill>
+    );
+};

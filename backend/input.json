@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "enlace_imagen": "cama.jpg",
+      "texto": "Vamo 1",
+      "precio": "S/ 123123"
+    },
+    {
+      "enlace_imagen": "cama.jpg",
+      "texto": "Vamo 2",
+      "precio": "S/ 12312331"
+    },
+    {
+      "enlace_imagen": "cama.jpg",
+      "texto": "Vamo 3",
+      "precio": "S/ 1235523"
+    },
+    {
+      "enlace_imagen": "cama.jpg",
+      "texto": "Vamo 4",
+      "precio": "S/ 123123"
+    }
+  ]
+}
