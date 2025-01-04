@@ -1,6 +1,9 @@
 import React from 'react';
-import { AbsoluteFill } from 'remotion';
+import { AbsoluteFill, Sequence, interpolate, spring, useVideoConfig, useCurrentFrame } from 'remotion';
 import { Pieza_Izquierda, Pieza_Derecha } from "./Piezas_Fondo";
+
+const screenWidth = 1920; // Ancho de la pantalla
+const screenHeight = 1080; // Alto de la pantalla
 
 const contenedor_piezas_fondo = {
     display: "flex",
@@ -55,7 +58,75 @@ const contenedor_texto = {
 const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
     // Aquí puedes mantener las transformaciones y animaciones
     // (el código que ya tienes) para cada producto.
+    const { width: screenWidth, height: screenHeight } = useVideoConfig();
+    const frame = useCurrentFrame();
     
+
+    // Duraciones
+    const entradaDuracion = 10; // En fotogramas
+    const duracionVisible = 10 * fps; // 10 segundos de visibilidad
+    const salidaInicio = entradaDuracion + duracionVisible;
+    const salidaDuracion = 10; // En fotogramas
+
+
+    // Cálculo de posiciones para entrada y salida
+    const imagenXOffset =
+      relativeFrame < entradaDuracion
+        ? interpolate(relativeFrame, [0, entradaDuracion], [screenWidth, 0], {
+            extrapolateRight: "clamp",
+          })
+        : relativeFrame >= salidaInicio
+        ? interpolate(
+            relativeFrame,
+            [salidaInicio, salidaInicio + salidaDuracion],
+            [0, screenWidth],
+            {
+              extrapolateLeft: "clamp",
+            }
+          )
+        : 0;
+
+    
+    const textoYOffset =
+        relativeFrame < entradaDuracion
+          ? interpolate(relativeFrame, [0, entradaDuracion], [screenHeight, 0], {
+              extrapolateRight: "clamp",
+            })
+          : relativeFrame >= salidaInicio
+          ? interpolate(
+              relativeFrame,
+              [salidaInicio, salidaInicio + salidaDuracion],
+              [0, screenHeight],
+              {
+                extrapolateLeft: "clamp",
+              }
+            )
+          : 0;
+
+    const precioYOffset =
+          relativeFrame < entradaDuracion
+            ? interpolate(relativeFrame, [0, entradaDuracion], [-screenHeight, 0], {
+                extrapolateRight: "clamp",
+              })
+            : relativeFrame >= salidaInicio
+            ? interpolate(
+                relativeFrame,
+                [salidaInicio, salidaInicio + salidaDuracion],
+                [0, -screenHeight],
+                {
+                  extrapolateLeft: "clamp",
+                }
+              )
+            : 0;
+      
+    
+            const createOscillation = (amplitude, speed) =>
+            amplitude * Math.sin((2 * Math.PI * frame) / (fps * speed));
+          
+          const imagenOscillationX = createOscillation(10, 1); // Oscilación horizontal para la imagen
+          const textoOscillationY = createOscillation(15, 0.8); // Oscilación vertical para el texto
+          const precioOscillationY = createOscillation(12, 0.9); // Oscilación vertical para el precio
+
     // Ejemplo simplificado:
     return (
         <AbsoluteFill
@@ -76,7 +147,7 @@ const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
             <div style={{ ...contenedor_contenido }}>
                 <div
                     style={{...contenedor_imagen,
-                        //transform: `translateX(${imagenXOffset + imagenOscillationX}px)`,
+                        transform: `translateX(${imagenXOffset + imagenOscillationX}px)`,
                     }}
                 >
                     <img
@@ -93,7 +164,7 @@ const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
                 <div
                 style={{
                     ...contenedor_texto,
-                    //transform: `translateY(${textoYOffset + textoOscillationY}px)`,
+                    transform: `translateY(${textoYOffset + textoOscillationY}px)`,
                 }}
                 >
                     <h1 style={{
@@ -108,7 +179,7 @@ const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
                 <div
                 style={{
                     ...contenedor_precio,
-                    //transform: `translateY(${precioYOffset + precioOscillationY}px)`,
+                    transform: `translateY(${precioYOffset + precioOscillationY}px)`,
                 }}
                 >
                     <h2 style={{
