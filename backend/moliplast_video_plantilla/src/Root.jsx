@@ -1,5 +1,6 @@
 import { Composition } from 'remotion';
 import { Producto_Unico } from './Producto_Unico'; // Ajusta esta importación si está en otra ubicación
+import './assets/styles/estilos_generales.css'
 
 export const RemotionRoot = () => {
     return (
