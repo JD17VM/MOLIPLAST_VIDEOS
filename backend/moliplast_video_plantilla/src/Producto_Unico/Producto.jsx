@@ -71,13 +71,13 @@ const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
 
     // Cálculo de posiciones para entrada y salida
     const imagenXOffset =
-      relativeFrame < entradaDuracion
-        ? interpolate(relativeFrame, [0, entradaDuracion], [screenWidth, 0], {
+      frame < entradaDuracion
+        ? interpolate(frame, [0, entradaDuracion], [screenWidth, 0], {
             extrapolateRight: "clamp",
           })
-        : relativeFrame >= salidaInicio
+        : frame >= salidaInicio
         ? interpolate(
-            relativeFrame,
+            frame,
             [salidaInicio, salidaInicio + salidaDuracion],
             [0, screenWidth],
             {
@@ -88,13 +88,13 @@ const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
 
     
     const textoYOffset =
-        relativeFrame < entradaDuracion
-          ? interpolate(relativeFrame, [0, entradaDuracion], [screenHeight, 0], {
+        frame < entradaDuracion
+          ? interpolate(frame, [0, entradaDuracion], [screenHeight, 0], {
               extrapolateRight: "clamp",
             })
-          : relativeFrame >= salidaInicio
+          : frame >= salidaInicio
           ? interpolate(
-              relativeFrame,
+              frame,
               [salidaInicio, salidaInicio + salidaDuracion],
               [0, screenHeight],
               {
@@ -104,13 +104,13 @@ const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
           : 0;
 
     const precioYOffset =
-          relativeFrame < entradaDuracion
-            ? interpolate(relativeFrame, [0, entradaDuracion], [-screenHeight, 0], {
+          frame < entradaDuracion
+            ? interpolate(frame, [0, entradaDuracion], [-screenHeight, 0], {
                 extrapolateRight: "clamp",
               })
-            : relativeFrame >= salidaInicio
+            : frame >= salidaInicio
             ? interpolate(
-                relativeFrame,
+                frame,
                 [salidaInicio, salidaInicio + salidaDuracion],
                 [0, -screenHeight],
                 {
