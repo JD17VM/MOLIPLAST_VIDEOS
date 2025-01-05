@@ -30,7 +30,7 @@ const contenedor_imagen = {
   backgroundColor: "yellow",
   width: "100%",
   height: "100%",
-  gridRow: "span 2",
+  gridArea: "cont_imagen",
   boxSizing: "border-box",
   display: "flex",
   justifyContent: "center",
@@ -45,7 +45,8 @@ const contenedor_texto = {
   boxSizing: "border-box",
   justifyContent: "center",
   padding: "3rem",
-  color: "black"
+  color: "black",
+  gridArea: "cont_texto",
 };
   
   const contenedor_precio = {
@@ -54,12 +55,13 @@ const contenedor_texto = {
     boxSizing: "border-box",
     justifyContent: "start",
     padding: "3rem",
-    color: "#3c93b1"
+    color: "#3c93b1",
+    gridArea: "cont_precio",
   };
   
 
 
-const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
+const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps, index }) => {
     // Aquí puedes mantener las transformaciones y animaciones
     // (el código que ya tienes) para cada producto.
     const { width: screenWidth, height: screenHeight } = useVideoConfig();
@@ -159,7 +161,7 @@ const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
             </div>
 
 
-            <div style={{ ...contenedor_contenido }}>
+            <div style={{ ...contenedor_contenido, gridTemplateAreas: index % 2 !== 0 ? `"cont_texto cont_imagen " "cont_precio cont_imagen"` : `"cont_imagen cont_texto" "cont_imagen cont_precio"` }}>
                 <div
                     style={{...contenedor_imagen,
                         transform: `translateX(${imagenXOffset + imagenOscillationX}px)`,

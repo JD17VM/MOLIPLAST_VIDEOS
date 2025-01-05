@@ -32,6 +32,7 @@ export const Producto_Unico = ({ data = [] }) => {
                             texto={producto.texto}
                             precio={producto.precio}
                             fps={fps}
+                            index={index}
                         />
                     </Sequence>
                 );
