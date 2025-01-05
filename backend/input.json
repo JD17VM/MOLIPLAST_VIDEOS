@@ -1,24 +1,24 @@
 {
   "data": [
     {
-      "enlace_imagen": "cama.jpg",
-      "texto": "Vamo 1",
-      "precio": "S/ 123123"
+      "enlace_imagen": "ImagenProducto1.png",
+      "texto": "Nda",
+      "precio": "S/. 1231234"
     },
     {
-      "enlace_imagen": "cama.jpg",
-      "texto": "Vamo 2",
-      "precio": "S/ 12312331"
+      "enlace_imagen": "ImagenProducto2.png",
+      "texto": "Das",
+      "precio": "S/. 52454"
     },
     {
-      "enlace_imagen": "cama.jpg",
-      "texto": "Vamo 3t",
-      "precio": "S/ 1235523"
+      "enlace_imagen": "ImagenProducto3.png",
+      "texto": "asd",
+      "precio": "S/. 5435435"
     },
     {
-      "enlace_imagen": "cama.jpg",
-      "texto": "Vamo 4",
-      "precio": "S/ 123123"
+      "enlace_imagen": "ImagenProducto4.png",
+      "texto": "asdasd",
+      "precio": "S/. 253"
     }
   ]
 }

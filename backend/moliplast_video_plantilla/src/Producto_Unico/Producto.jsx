@@ -1,5 +1,6 @@
 import React from 'react';
 import { AbsoluteFill, Sequence, interpolate, spring, useVideoConfig, useCurrentFrame } from 'remotion';
+import imageHelper from '../utils/imageHelper';
 import { Pieza_Izquierda, Pieza_Derecha } from "./Piezas_Fondo";
 
 const screenWidth = 1920; // Ancho de la pantalla
@@ -7,7 +8,7 @@ const screenHeight = 1080; // Alto de la pantalla
 
 const contenedor_piezas_fondo = {
     display: "flex",
-    backgroundColor: "blue",
+    //backgroundColor: "blue",
     width: "100%",
     height: "100%",
     position: "absolute",
@@ -17,7 +18,7 @@ const contenedor_piezas_fondo = {
 const contenedor_contenido = {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
-    backgroundColor: "blue",
+    //backgroundColor: "blue",
     width: "90%",
     height: "70%",
     position: "relative",
@@ -26,31 +27,34 @@ const contenedor_contenido = {
 };
 
 const contenedor_imagen = {
-    backgroundColor: "yellow",
-    width: "100%",
-    height: "100%",
-    gridRow: "span 2",
-    boxSizing: "border-box",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+  backgroundColor: "yellow",
+  width: "100%",
+  height: "100%",
+  gridRow: "span 2",
+  boxSizing: "border-box",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  marginRight:"10px"
 };
 
 const contenedor_texto = {
-    display: "flex",
-    backgroundColor: "purple",
-    width: "100%",
-    boxSizing: "border-box",
-    justifyContent: "center",
-    padding: "1rem",
-  };
+  display: "flex",
+  //backgroundColor: "purple",
+  width: "100%",
+  boxSizing: "border-box",
+  justifyContent: "center",
+  padding: "3rem",
+  color: "black"
+};
   
   const contenedor_precio = {
     display: "flex",
     width: "100%",
     boxSizing: "border-box",
-    justifyContent: "center",
-    padding: "1rem",
+    justifyContent: "start",
+    padding: "3rem",
+    color: "#3c93b1"
   };
   
 
@@ -127,6 +131,17 @@ const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
           const textoOscillationY = createOscillation(15, 0.8); // Oscilación vertical para el texto
           const precioOscillationY = createOscillation(12, 0.9); // Oscilación vertical para el precio
 
+    var imagen = ""
+    if(enlace_imagen == "ImagenProducto1.png"){
+      imagen = imageHelper.ImagenProducto1
+    }else if(enlace_imagen == "ImagenProducto2.png"){
+      imagen = imageHelper.ImagenProducto2
+    }else if(enlace_imagen == "ImagenProducto3.png"){
+      imagen = imageHelper.ImagenProducto3
+    }else if(enlace_imagen == "ImagenProducto4.png"){
+      imagen = imageHelper.ImagenProducto4
+    }
+
     // Ejemplo simplificado:
     return (
         <AbsoluteFill
@@ -151,11 +166,11 @@ const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
                     }}
                 >
                     <img
-                        src={enlace_imagen}
+                        src={imagen}
                         alt="Producto"
                         style={{
-                            width: "300px",
-                            height: "300px",
+                            width: "80%",
+                            height: "80%",
                             objectFit: "contain",
                         }}
                     />
