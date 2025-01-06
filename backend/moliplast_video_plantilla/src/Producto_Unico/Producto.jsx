@@ -27,7 +27,7 @@ const contenedor_contenido = {
 };
 
 const contenedor_imagen = {
-  backgroundColor: "yellow",
+  //backgroundColor: "yellow",
   width: "100%",
   height: "100%",
   gridArea: "cont_imagen",

@@ -20,7 +20,9 @@ const pieza_derecha = {
 export const Pieza_Izquierda = () => {
   return (
     <div style={{...pieza_izquierda}}>
-      <img src={imageHelper.PiezaIzquierda} alt="Nombre" />
+      <img 
+      style={{height:"50%"}}
+      src={imageHelper.PiezaIzquierda} alt="Nombre" />
     </div>
   );
 };

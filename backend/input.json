@@ -1,24 +1,24 @@
 {
   "data": [
     {
-      "enlace_imagen": "ImagenProducto1.png",
-      "texto": "Nda",
-      "precio": "S/. 1231234"
-    },
-    {
-      "enlace_imagen": "ImagenProducto2.png",
-      "texto": "Das",
-      "precio": "S/. 52454"
+      "enlace_imagen": "ImagenProducto4.png",
+      "texto": "LAVADORA 15 Lts. MORAVECO",
+      "precio": "S/ 769"
     },
     {
       "enlace_imagen": "ImagenProducto3.png",
-      "texto": "asd",
-      "precio": "S/. 5435435"
+      "texto": "ASPIRADORA AGUA 4TH. SINGAY 469",
+      "precio": "S/. 145"
     },
     {
-      "enlace_imagen": "ImagenProducto4.png",
-      "texto": "asdasd",
-      "precio": "S/. 253"
+      "enlace_imagen": "ImagenProducto1.png",
+      "texto": "TACHO DE VASURA REY 10 Lt,",
+      "precio": "S/. 35"
+    },
+    {
+      "enlace_imagen": "ImagenProducto2.png",
+      "texto": "BALDE BASA 4 Lt,",
+      "precio": "S/. 49"
     }
   ]
 }
