@@ -32,7 +32,7 @@ app.post('/generate-video', (req, res) => {
     console.log('Archivo JSON generado en:', inputPath);
     console.log('Datos contenidos:', formattedData);
 
-    const command = `cd moliplast_video_plantilla && npx remotion render --props=../input.json ProductoUnico ../output/video.mp4`;
+    const command = `cd moliplast_video_plantilla && npx remotion render --props=../input.json Productos ../output/video.mp4`;
 
     exec(command, (error, stdout, stderr) => {
         if (error) {

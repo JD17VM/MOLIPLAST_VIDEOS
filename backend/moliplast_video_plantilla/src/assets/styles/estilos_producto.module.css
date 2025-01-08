@@ -1,0 +1,179 @@
+.contenedor_piezas_fondo{
+    display: flex;
+    width:100%;
+    height:100%;
+    position: absolute;
+}
+
+
+.contenedor_contenido{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    height: 70%;
+    position:relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+
+    .contenedor_imagen{
+        width: 100%;
+        height: 100%;
+        grid-area: cont_imagen;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+        .contenedor_imagen > img{
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+    .contenedor_texto{
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+        padding: 3rem;
+        color: black;
+        grid-area: cont_texto;
+        align-items: center;
+    }
+
+        .contenedor_texto > h1{
+            font-size: 5rem;
+            margin: 0;
+            display: flex;
+            font-weight: 700;
+            line-height: 5.5rem;
+        }
+
+    .contenedor_precio{
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: start;
+        padding: 3rem;
+        color: #3c93b1;
+        grid-area: cont_precio;
+    }
+
+        .contenedor_precio > h2{
+            margin: 0;
+            font-size: 8rem;
+            font-weight: 800;
+        }
+
+
+.logo_moliplast{
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.logo_moliplast > img{
+    height: 100%;
+}
+
+
+/* ------------------------------- */
+
+.contenedor_2_productos{
+    /*background-color: red;*/
+    width: 75%;
+    height: 90%;
+    z-index: 2;
+}
+
+    .contenedor_2_productos > .producto{
+        box-sizing: border-box;
+        /*background-color: green;*/
+        height: 43%;
+        /*border: 1px solid black;*/
+        display: grid;
+        align-items: start;
+        padding: 0;
+        grid-template-areas:
+        "texto imagen"
+        "precio imagen";
+        column-gap: 10px;
+    }
+
+    .contenedor_2_productos > .producto:first-child{
+        grid-template-areas:
+        "imagen texto"
+        "imagen precio";
+    }
+
+        .contenedor_2_productos > .producto > .contenedor_imagen{
+            /*background-color: blue;*/
+            height: 450px;
+            width: 500px;
+            grid-area: imagen;
+            padding: 0;
+        }
+
+            .contenedor_2_productos > .producto > .contenedor_imagen > img{
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+
+        .contenedor_2_productos > .producto > .contenedor_texto{
+            /*background-color: red;*/
+            grid-area: texto;
+            padding: 0;
+            align-self: end;
+
+        }
+
+            .contenedor_2_productos > .producto > .contenedor_texto > h1{
+                padding: 0;
+                font-size: 5rem;
+            }
+
+        .contenedor_2_productos > .producto > .contenedor_precio{
+            grid-area: precio;
+            padding: 0;
+            /*background-color: yellow;*/
+            display: flex;
+            width: 100%;
+        }
+
+            .contenedor_2_productos > .producto > .contenedor_precio > h2{
+                font-size: 7rem;
+                padding: 0;
+            }
+
+        
+
+        
+
+    .contenedor_2_productos > .logo{
+        height: 14%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .contenedor_2_productos > .logo > img{
+            height: 60%;
+        }
+
+        .contenedor_2_productos > .logo > div{
+            width:80%;
+            height: 10px;
+            background-color: rgb(0, 12, 117);
+            position: absolute;
+            z-index: -5;
+        }

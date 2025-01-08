@@ -1,24 +1,34 @@
 {
   "data": [
     {
-      "enlace_imagen": "ImagenProducto1.png",
-      "texto": "jarra 2.5 lt",
-      "precio": "s/. 8.00"
+      "producto_doble": true,
+      "enlace_imagen_1": null,
+      "texto_1": "asdasd",
+      "precio_1": "asdasd",
+      "enlace_imagen_2": null,
+      "texto_2": "asdasd",
+      "precio_2": "asdasdasd"
     },
     {
-      "enlace_imagen": "ImagenProducto3.png",
-      "texto": "comoda 5 pisos",
-      "precio": "s/. 500.00"
+      "producto_doble": false,
+      "enlace_imagen": null,
+      "texto": "asdfasdgfdg",
+      "precio": "asgdsffgdsfh"
     },
     {
-      "enlace_imagen": "ImagenProducto4.png",
-      "texto": "sillas",
-      "precio": "s/. 45.00"
+      "producto_doble": true,
+      "enlace_imagen_1": null,
+      "texto_1": "gfdg",
+      "precio_1": "sfgsg",
+      "enlace_imagen_2": null,
+      "texto_2": "dfg",
+      "precio_2": "gdfsg"
     },
     {
-      "enlace_imagen": "ImagenProducto3.png",
-      "texto": "bolsas 20 x 30 ",
-      "precio": "s/. 11.50"
+      "producto_doble": false,
+      "enlace_imagen": null,
+      "texto": "shbsggvgsd",
+      "precio": "sdfgsdgre"
     }
   ]
 }
