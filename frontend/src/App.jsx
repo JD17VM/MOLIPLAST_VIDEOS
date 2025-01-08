@@ -12,16 +12,29 @@ export default function App() {
 
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const handleChange = (index, field, value) => {
+  const handleChange = (index, field, value) => {           
     const updatedFormData = [...formData];
     updatedFormData[index][field] = value;
     setFormData(updatedFormData);
   };
 
   const handleFileChange = (index, file) => {
+    if (!file) return;
+    
     const updatedFormData = [...formData];
-    updatedFormData[index].file = file;
+    // Si es producto doble, determina qué campo actualizar basado en alguna lógica
+    if (updatedFormData[index].producto_doble) {
+      // Aquí puedes agregar lógica para determinar si es imagen_1 o imagen_2
+      const fieldName = 'enlace_imagen_1'; // o 'enlace_imagen_2'
+      updatedFormData[index][fieldName] = file.name;
+    } else {
+      updatedFormData[index].enlace_imagen = file.name;
+    }
     setFormData(updatedFormData);
+    
+    // Para debugging
+    console.log('Archivo seleccionado:', file.name);
+    console.log('FormData actualizado:', updatedFormData);
   };
 
   const toggleProductoDoble = (index) => {
@@ -32,16 +45,16 @@ export default function App() {
     updatedFormData[index] = isDoble
       ? {
           producto_doble: true,
-          enlace_imagen_1: null,
+          enlace_imagen_1: '',
           texto_1: '',
           precio_1: '',
-          enlace_imagen_2: null,
+          enlace_imagen_2: '',
           texto_2: '',
           precio_2: '',
         }
       : {
           producto_doble: false,
-          enlace_imagen: null,
+          enlace_imagen: '',
           texto: '',
           precio: '',
         };
@@ -53,30 +66,30 @@ export default function App() {
   const handleSubmit = async () => {
     setIsGenerating(true);
     try {
-      // Genera el objeto JSON
+      // Crear un objeto con los datos del formulario
       const jsonObjects = formData.map((data) =>
         data.producto_doble
           ? {
               producto_doble: true,
-              enlace_imagen_1: data.enlace_imagen_1 ? data.enlace_imagen_1.name : null,
+              enlace_imagen_1: data.enlace_imagen_1 || null,
               texto_1: data.texto_1,
               precio_1: data.precio_1,
-              enlace_imagen_2: data.enlace_imagen_2 ? data.enlace_imagen_2.name : null,
+              enlace_imagen_2: data.enlace_imagen_2 || null,
               texto_2: data.texto_2,
               precio_2: data.precio_2,
             }
           : {
               producto_doble: false,
-              enlace_imagen: data.enlace_imagen ? data.enlace_imagen.name : null,
+              enlace_imagen: data.enlace_imagen || null,
               texto: data.texto,
               precio: data.precio,
             }
       );
     
-      // Imprime el JSON en consola para revisarlo
+      // Imprimir el JSON en consola para revisarlo
       console.log("JSON a enviar:", JSON.stringify({ data: jsonObjects }, null, 2));
     
-      // Aquí comentaríamos el envío de datos al servidor
+      // Aquí comentaríamos el envío de datos al servidor por ahora
       const response = await fetch('http://localhost:3001/generate-video', {
         method: 'POST',
         headers: {
@@ -99,7 +112,6 @@ export default function App() {
       setIsGenerating(false);
     }
   };
-  
   
 
   return (
@@ -138,7 +150,7 @@ export default function App() {
               <input
                 type="file"
                 className="form-control"
-                onChange={(e) => handleFileChange(index, 'enlace_imagen_1', e.target.files[0])}
+                onChange={(e) => handleFileChange(index, e.target.files[0])}
               />
             </div>
             <div className="mb-3">
@@ -165,7 +177,7 @@ export default function App() {
               <input
                 type="file"
                 className="form-control"
-                onChange={(e) => handleFileChange(index, 'enlace_imagen_2', e.target.files[0])}
+                onChange={(e) => handleFileChange(index, e.target.files[0])}
               />
             </div>
             <div className="mb-3">
@@ -196,7 +208,7 @@ export default function App() {
               <input
                 type="file"
                 className="form-control"
-                onChange={(e) => handleFileChange(index, 'enlace_imagen', e.target.files[0])}
+                onChange={(e) => handleFileChange(index, e.target.files[0])}
               />
             </div>
             <div className="mb-3">
