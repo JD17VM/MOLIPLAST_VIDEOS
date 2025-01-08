@@ -1,3 +1,5 @@
+Este código 
+
 import React, { useState } from 'react';
 import './App.css';
 import imageHelper from './utils/imageHelper';
@@ -117,3 +119,105 @@ export default function App() {
     </>
   );
 }
+
+
+con formularios genera objetos json de 3 elementos cad formulario y luego lo envía a otro lado y lo recibe algo así. 
+{
+  "data": [
+    {
+      "enlace_imagen": "ImagenProducto1.png",
+      "texto": "jarra 2.5 lt",
+      "precio": "s/. 8.00"
+    },
+    {
+      "enlace_imagen": "ImagenProducto3.png",
+      "texto": "comoda 5 pisos",
+      "precio": "s/. 500.00"
+    },
+    {
+      "enlace_imagen": "ImagenProducto4.png",
+      "texto": "sillas",
+      "precio": "s/. 45.00"
+    },
+    {
+      "enlace_imagen": "ImagenProducto3.png",
+      "texto": "bolsas 20 x 30 ",
+      "precio": "s/. 11.50"
+    }
+  ]
+}
+
+
+, lo qque necesito es que cada formulario tenga 2 opciones, una que es la de un solo formulario y otra qu ees la doble, tal esa así que deberá generar este json algo así: 
+
+{
+  "data": [
+    {
+        producto_doble: true,
+
+        enlace_imagen_1: "../imagen_E",
+        texto_1: "Esta es la descripcion del primer producto",
+        precio_1: "S/.400.00",
+
+        enlace_imagen_2: "../imagen_E",
+        texto_2: "Esta es la descripcion de segundo producto",
+        precio_2: "S/.110.00",
+    },
+        
+        {
+        producto_doble: true,
+
+        enlace_imagen_1: "../imagen_E",
+        texto_1: "Esta es la descripcion del primer producto",
+        precio_1: "S/.400.00",
+
+        enlace_imagen_2: "../imagen_E",
+        texto_2: "Esta es la descripcion de segundo producto",
+        precio_2: "S/.110.00",
+        },
+        {
+        producto_doble: false,
+
+        enlace_imagen: "../imagen_C",
+        texto: "Esta es la descripcion de la imagen C DASD",
+        precio: "S/.300.00",
+        },
+        {
+        producto_doble: true,
+
+        enlace_imagen_1: "../imagen_E",
+        texto_1: "Esta es la descripcion del primer producto",
+        precio_1: "S/.400.00",
+
+        enlace_imagen_2: "../imagen_E",
+        texto_2: "Esta es la descripcion de segundo producto",
+        precio_2: "S/.110.00",
+        },
+    ];
+}
+
+Si te das cuenta hay algunos objetos así: 
+
+{
+    producto_doble: false,
+
+    enlace_imagen: "../imagen_A",
+    texto: "Este es el primer producto",
+    precio: "S/.100.00",
+},
+
+y si te das cuenta tiene un campo más quie es producto doble, si en el formulario establecemos que sea solo un formulario entonces el producto doble será false y tendrá los elementos: enlace_imagen, texto y precio. pero si en el formulario se elige que sea doble, entonces el producto_doble será true y será algo así:
+
+{
+        producto_doble: true,
+
+        enlace_imagen_1: "../imagen_E",
+        texto_1: "Esta es la descripcion del primer producto",
+        precio_1: "S/.400.00",
+
+        enlace_imagen_2: "../imagen_E",
+        texto_2: "Esta es la descripcion de segundo producto",
+        precio_2: "S/.110.00",
+        },
+
+no sé si me dejé entender
