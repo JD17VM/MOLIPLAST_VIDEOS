@@ -18,24 +18,22 @@ export default function App() {
     setFormData(updatedFormData);
   };
 
-  const handleFileChange = (index, file) => {
+  const handleFileChange = (index, file, imageNumber) => {
     if (!file) return;
     
     const updatedFormData = [...formData];
-    // Si es producto doble, determina qué campo actualizar basado en alguna lógica
-    if (updatedFormData[index].producto_doble) {
-      // Aquí puedes agregar lógica para determinar si es imagen_1 o imagen_2
-      const fieldName = 'enlace_imagen_1'; // o 'enlace_imagen_2'
-      updatedFormData[index][fieldName] = file.name;
-    } else {
-      updatedFormData[index].enlace_imagen = file.name;
-    }
-    setFormData(updatedFormData);
-    
-    // Para debugging
-    console.log('Archivo seleccionado:', file.name);
-    console.log('FormData actualizado:', updatedFormData);
-  };
+        if (updatedFormData[index].producto_doble) {
+          // Si es producto doble, usa el imageNumber para determinar cuál imagen actualizar
+          if (imageNumber === 1) {
+            updatedFormData[index].enlace_imagen_1 = file.name;
+          } else {
+            updatedFormData[index].enlace_imagen_2 = file.name;
+          }
+        } else {
+          updatedFormData[index].enlace_imagen = file.name;
+        }
+        setFormData(updatedFormData);
+    };
 
   const toggleProductoDoble = (index) => {
     const updatedFormData = [...formData];
@@ -150,7 +148,7 @@ export default function App() {
               <input
                 type="file"
                 className="form-control"
-                onChange={(e) => handleFileChange(index, e.target.files[0])}
+                onChange={(e) => handleFileChange(index, e.target.files[0], 1)}
               />
             </div>
             <div className="mb-3">
@@ -177,7 +175,7 @@ export default function App() {
               <input
                 type="file"
                 className="form-control"
-                onChange={(e) => handleFileChange(index, e.target.files[0])}
+                onChange={(e) => handleFileChange(index, e.target.files[0], 2)}
               />
             </div>
             <div className="mb-3">
