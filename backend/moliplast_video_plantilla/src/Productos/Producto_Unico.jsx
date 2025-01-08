@@ -106,6 +106,12 @@ const Producto_Unico = ({ enlace_imagen, texto, precio, relativeFrame, fps, inde
     imagen = imageHelper.ImagenProducto3
   } else if (enlace_imagen == "ImagenProducto4.png") {
     imagen = imageHelper.ImagenProducto4
+  } else if (enlace_imagen == "ImagenProducto5.jpg") {
+    imagen = imageHelper.ImagenProducto5
+  } else if (enlace_imagen == "ImagenProducto6.jpg") {
+    imagen = imageHelper.ImagenProducto6
+  } else if (enlace_imagen == "ImagenProducto7.jpg") {
+    imagen = imageHelper.ImagenProducto7
   }
 
   // Ejemplo simplificado:
@@ -130,7 +136,7 @@ const Producto_Unico = ({ enlace_imagen, texto, precio, relativeFrame, fps, inde
             transform: `translateX(${imagenXOffset + imagenOscillationX}px)`,
           }}
         >
-          <img src={imageHelper.Mario} alt="Producto" />
+          <img src={imagen} alt="Producto" />
         </div>
 
         <div className={styles.contenedor_texto}

@@ -3,32 +3,32 @@
     {
       "producto_doble": true,
       "enlace_imagen_1": null,
-      "texto_1": "asdasd",
-      "precio_1": "asdasd",
+      "texto_1": "Este es el producto 1 1",
+      "precio_1": "S/. 1345.00",
       "enlace_imagen_2": null,
-      "texto_2": "asdasd",
-      "precio_2": "asdasdasd"
+      "texto_2": "Este es el producto 1 2",
+      "precio_2": "S/. 1200.00"
     },
     {
       "producto_doble": false,
       "enlace_imagen": null,
-      "texto": "asdfasdgfdg",
-      "precio": "asgdsffgdsfh"
+      "texto": "Este es el producto 2",
+      "precio": "S/. 1250.00"
+    },
+    {
+      "producto_doble": false,
+      "enlace_imagen": null,
+      "texto": "Este es el producto 3",
+      "precio": "S/. 1310.00"
     },
     {
       "producto_doble": true,
       "enlace_imagen_1": null,
-      "texto_1": "gfdg",
-      "precio_1": "sfgsg",
+      "texto_1": "Este es el producto 4 1",
+      "precio_1": "S/ 1450.00",
       "enlace_imagen_2": null,
-      "texto_2": "dfg",
-      "precio_2": "gdfsg"
-    },
-    {
-      "producto_doble": false,
-      "enlace_imagen": null,
-      "texto": "shbsggvgsd",
-      "precio": "sdfgsdgre"
+      "texto_2": "Este es el producto 4 2",
+      "precio_2": ""
     }
   ]
 }
