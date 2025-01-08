@@ -1,24 +1,24 @@
 {
   "data": [
     {
-      "enlace_imagen": "ImagenProducto4.png",
-      "texto": "LAVADORA 15 Lts. MORAVECO",
-      "precio": "S/ 769"
+      "enlace_imagen": "ImagenProducto1.png",
+      "texto": "jarra 2.5 lt",
+      "precio": "s/. 8.00"
     },
     {
       "enlace_imagen": "ImagenProducto3.png",
-      "texto": "ASPIRADORA AGUA 4TH. SINGAY 469",
-      "precio": "S/. 145"
+      "texto": "comoda 5 pisos",
+      "precio": "s/. 500.00"
     },
     {
-      "enlace_imagen": "ImagenProducto1.png",
-      "texto": "TACHO DE VASURA REY 10 Lt,",
-      "precio": "S/. 35"
+      "enlace_imagen": "ImagenProducto4.png",
+      "texto": "sillas",
+      "precio": "s/. 45.00"
     },
     {
-      "enlace_imagen": "ImagenProducto2.png",
-      "texto": "BALDE BASA 4 Lt,",
-      "precio": "S/. 49"
+      "enlace_imagen": "ImagenProducto3.png",
+      "texto": "bolsas 20 x 30 ",
+      "precio": "s/. 11.50"
     }
   ]
 }

@@ -1,6 +1,7 @@
 import PiezaDerecha from '../assets/imgs/Pieza_derecha.png';
 import PiezaIzquierda from '../assets/imgs/Pieza_izquierda.png';
 import Mario from '../assets/imgs/Mario.png';
+import Logo_Moliplast from '../assets/imgs/Logo_Moliplast.jpg';
 
 import ImagenProducto1 from '../assets/imgs/ImagenProducto1.png';
 import ImagenProducto2 from '../assets/imgs/ImagenProducto2.png';
@@ -19,4 +20,5 @@ export default{
     "ImagenProducto2": ImagenProducto2,
     "ImagenProducto3": ImagenProducto3,
     "ImagenProducto4": ImagenProducto4,
+    "Logo_Moliplast": Logo_Moliplast,
 }
