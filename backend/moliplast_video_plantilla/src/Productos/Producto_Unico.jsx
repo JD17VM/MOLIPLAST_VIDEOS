@@ -8,6 +8,8 @@ import styles from '../assets/styles/estilos_producto.module.css'
 const screenWidth = 1920; // Ancho de la pantalla
 const screenHeight = 1080; // Alto de la pantalla
 
+const LOCAL_ASSETS = "http://localhost:3001/assets";
+
 const Producto_Unico = ({ enlace_imagen, texto, precio, relativeFrame, fps, index }) => {
   // Aquí puedes mantener las transformaciones y animaciones
   // (el código que ya tienes) para cada producto.
@@ -136,7 +138,7 @@ const Producto_Unico = ({ enlace_imagen, texto, precio, relativeFrame, fps, inde
             transform: `translateX(${imagenXOffset + imagenOscillationX}px)`,
           }}
         >
-          <img src={imagen} alt="Producto" />
+          <img src={`${LOCAL_ASSETS}/imagenes/Mario.png`} alt="Producto" />
         </div>
 
         <div className={styles.contenedor_texto}

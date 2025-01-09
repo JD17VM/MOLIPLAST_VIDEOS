@@ -12,6 +12,8 @@ app.use(bodyParser.json()); // Necesario para que Express pueda manejar solicitu
 
 const PORT = 3001;
 
+app.use('/assets', express.static('public/assets'));
+
 // Ruta para recibir los datos del formulario
 app.post('/generate-video', (req, res) => {
     const inputData = req.body.data; // Aquí estamos accediendo a los datos que se envían desde el frontend
