@@ -235,14 +235,29 @@ export default function App() {
   ))}
 </div>
 
-      <button
-        type="button"
-        className="btn btn-success mt-5"
-        onClick={handleSubmit}
-        disabled={isGenerating} // Deshabilitar el botón mientras se genera el video
-      >
-        {isGenerating ? 'Generando Video ...' : 'Crear Video'}  {/* Cambiar texto según el estado */}
-      </button>
+<div className="container">
+  <div class="row">
+    <div class="col">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">@</span>
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
+    </div>
+    </div>
+    <div class="col">
+    <button
+      type="button"
+      className="btn btn-success mt-5"
+      onClick={handleSubmit}
+      disabled={isGenerating} // Deshabilitar el botón mientras se genera el video
+    >
+      {isGenerating ? 'Generando Video ...' : 'Crear Video'}  {/* Cambiar texto según el estado */}
+    </button>
+    </div>
+  </div>
+  
+  
+</div>
+      
 
       <div>
         

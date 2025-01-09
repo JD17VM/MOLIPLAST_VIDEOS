@@ -1,146 +1,263 @@
-Tengo un problema muy grande, mi proyecto Remotion no recibe mi archivo input.json, se supone que al ejecutar
+El tema es creo en el formattedData, antes recibía sólo item.file, item.name y item.price y los transformaba a enlace_imagen, texto, precio, ahora lo cambié: 
 
-Te pongo la estructura que tengo:
+import React, { useState } from 'react';
+import './App.css';
+import imageHelper from './utils/imageHelper';
 
-/backend
-    server.js
-    input.json
-    package.json
-    package-lock.json
-    /node_modules
-    /moliplast_video_plantilla
-        remotion.config.js
-        package.json
-        package-lock.json
-        .prettierrc
-        .eslintrc
-        /node_modules
-        /public
-        /src
-            index.js
-            Root.jsx
-            /assets
-            /Producto_Unico
-                index.jsx
-                Producto.jsx
+export default function App() {
+  const [formData, setFormData] = useState([
+    { name: '', price: '', file: null },
+    { name: '', price: '', file: null },
+    { name: '', price: '', file: null },
+    { name: '', price: '', file: null },
+  ]);
 
+  const [isGenerating, setIsGenerating] = useState(false);
 
+  const handleChange = (index, field, value) => {
+    const updatedFormData = [...formData];
+    updatedFormData[index][field] = value;
+    setFormData(updatedFormData);
+  };
 
---- codigo archivo: input.json
+  const handleFileChange = (index, file) => {
+    const updatedFormData = [...formData];
+    updatedFormData[index].file = file;
+    setFormData(updatedFormData);
+  };
 
-[
-  { "enlace_imagen": "ruta/a/imagen1d.jpg", "texto": "Producto 1", "precio": "S/. 100.00" },
-  { "enlace_imagen": "ruta/a/imagen2d.jpg", "texto": "Producto 2", "precio": "S/. 200.00" },
-  { "enlace_imagen": "ruta/a/imagen3d.jpg", "texto": "Producto 3", "precio": "S/. 300.00" },
-  { "enlace_imagen": "ruta/a/imagen4d.jpg", "texto": "Producto 4", "precio": "S/. 400.00" }
-]
+  const toggleProductoDoble = (index) => {
+    const updatedFormData = [...formData];
+    const isDoble = !updatedFormData[index].producto_doble;
+  
+    // Cambiar el tipo de formulario y reiniciar los campos específicos
+    updatedFormData[index] = isDoble
+      ? {
+          producto_doble: true,
+          enlace_imagen_1: null,
+          texto_1: '',
+          precio_1: '',
+          enlace_imagen_2: null,
+          texto_2: '',
+          precio_2: '',
+        }
+      : {
+          producto_doble: false,
+          enlace_imagen: null,
+          texto: '',
+          precio: '',
+        };
+  
+    setFormData(updatedFormData);
+  };
+  
 
---- codigo archivo: Root.jsx
-
-
-import { Composition } from 'remotion';
-import { Producto_Unico } from './Producto_Unico'; // Ajusta esta importación si está en otra ubicación
-
-export const RemotionRoot = () => {
-    return (
-        <>
-            <Composition
-                id="ProductoUnico" // Este ID debe coincidir con el comando de renderizado
-                component={Producto_Unico}
-                durationInFrames={2000}
-                fps={30}
-                width={1920}
-                height={1080}
-                defaultProps={{
-                  data: [
-
-                  ]
-              }} // Datos predeterminados
-            />
-        </>
-    );
-};
-
-
---- codigo archivo: Producto.jsx
-
-
-import React from 'react';
-import { AbsoluteFill } from 'remotion';
-
-const Producto = ({ enlace_imagen, texto, precio, relativeFrame, fps }) => {
-    // Aquí puedes mantener las transformaciones y animaciones
-    // (el código que ya tienes) para cada producto.
+  const handleSubmit = async () => {
+    setIsGenerating(true);
+    try {
+      // Genera el objeto JSON
+      const jsonObjects = formData.map((data) =>
+        data.producto_doble
+          ? {
+              producto_doble: true,
+              enlace_imagen_1: data.enlace_imagen_1 ? data.enlace_imagen_1.name : null,
+              texto_1: data.texto_1,
+              precio_1: data.precio_1,
+              enlace_imagen_2: data.enlace_imagen_2 ? data.enlace_imagen_2.name : null,
+              texto_2: data.texto_2,
+              precio_2: data.precio_2,
+            }
+          : {
+              producto_doble: false,
+              enlace_imagen: data.enlace_imagen ? data.enlace_imagen.name : null,
+              texto: data.texto,
+              precio: data.precio,
+            }
+      );
     
-    // Ejemplo simplificado:
-    return (
-        <AbsoluteFill
-            style={{
-                backgroundColor: "white",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
-            <img
-                src={enlace_imagen}
-                alt="Producto"
-                style={{
-                    width: "300px",
-                    height: "300px",
-                    objectFit: "contain",
-                }}
-            />
-            <h1>{texto}</h1>
-            <h2>{precio}</h2>
-        </AbsoluteFill>
-    );
-};
-
-export { Producto };
-
-
---- codigo archivo: index.jsx
-
-import { AbsoluteFill, Sequence, useCurrentFrame, useVideoConfig } from 'remotion';
-import { Producto } from './Producto'; 
-
-export const Producto_Unico = ({ data }) => {
-    const { fps } = useVideoConfig();
-
-
-    console.log('Datos recibidos en Producto_Unico:', data);
-
-    // Duración por producto
-    const entradaDuracion = 10;
-    const duracionVisible = 10 * fps;
-    const salidaDuracion = 10;
-    const descanso = 3 * fps;
-    const duracionPorProducto = entradaDuracion + duracionVisible + salidaDuracion + descanso;
-
-
+      // Imprime el JSON en consola para revisarlo
+      console.log("JSON a enviar:", JSON.stringify({ data: jsonObjects }, null, 2));
     
+      // Aquí comentaríamos el envío de datos al servidor
+      const response = await fetch('http://localhost:3001/generate-video', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ data: jsonObjects }),
+      });
+  
+      // Simulación de respuesta (comentado):
+      if (response.ok) {
+        alert('¡Videos generados exitosamente!');
+      } else {
+        const result = await response.json();
+        alert('Error: ' + result.message);
+      }
+    } catch (error) {
+      console.error('Error enviando los datos:', error);
+      alert('Hubo un error al generar los videos.');
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+  
+  
 
-    return (
-        <AbsoluteFill style={{ backgroundColor: 'white' }}>
-            {data.map((producto, index) => {
-                const offset = index * duracionPorProducto;
-                return (
-                    <Sequence
-                        key={index}
-                        from={offset}
-                        durationInFrames={duracionPorProducto}
-                    >
-                        <Producto
-                            enlace_imagen={producto.enlace_imagen}
-                            texto={producto.texto}
-                            precio={producto.precio}
-                            fps={fps}
-                        />
-                    </Sequence>
-                );
-            })}
-        </AbsoluteFill>
-    );
-};
+  return (
+    <>
+    <div className="container" style={{
+      width:"100vw",
+      height: "100px"
+    }}>
+      <img style={{
+        height: "90%"
+      }} src={imageHelper.Logo_Moliplast} alt="" />
+    </div>
+    <div className="container mt-4">
+    <div className="row">
+  {formData.map((data, index) => (
+    <div className="col-md-3" key={index}>
+      <div className="card" style={{ width: 'auto' }}>
+        {/* Selector para cambiar entre Único y Doble */}
+        <div className="mb-3">
+          <label className="form-label">Tipo de Producto</label>
+          <select
+            className="form-select"
+            value={data.producto_doble ? 'doble' : 'unico'}
+            onChange={() => toggleProductoDoble(index)}
+          >
+            <option value="unico">Producto Único</option>
+            <option value="doble">Producto Doble</option>
+          </select>
+        </div>
+
+        {data.producto_doble ? (
+          // Formulario para Producto Doble
+          <>
+            <div className="mb-3">
+              <label className="form-label">Imagen Producto 1</label>
+              <input
+                type="file"
+                className="form-control"
+                onChange={(e) => handleFileChange(index, 'enlace_imagen_1', e.target.files[0])}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Texto Producto 1</label>
+              <textarea
+                className="form-control"
+                rows="2"
+                value={data.texto_1}
+                onChange={(e) => handleChange(index, 'texto_1', e.target.value)}
+              ></textarea>
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Precio Producto 1</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="S/. 1450.00"
+                value={data.precio_1}
+                onChange={(e) => handleChange(index, 'precio_1', e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Imagen Producto 2</label>
+              <input
+                type="file"
+                className="form-control"
+                onChange={(e) => handleFileChange(index, 'enlace_imagen_2', e.target.files[0])}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Texto Producto 2</label>
+              <textarea
+                className="form-control"
+                rows="2"
+                value={data.texto_2}
+                onChange={(e) => handleChange(index, 'texto_2', e.target.value)}
+              ></textarea>
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Precio Producto 2</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="S/. 1450.00"
+                value={data.precio_2}
+                onChange={(e) => handleChange(index, 'precio_2', e.target.value)}
+              />
+            </div>
+          </>
+        ) : (
+          // Formulario para Producto Único
+          <>
+            <div className="mb-3">
+              <label className="form-label">Imagen Producto</label>
+              <input
+                type="file"
+                className="form-control"
+                onChange={(e) => handleFileChange(index, 'enlace_imagen', e.target.files[0])}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Texto Producto</label>
+              <textarea
+                className="form-control"
+                rows="2"
+                value={data.texto}
+                onChange={(e) => handleChange(index, 'texto', e.target.value)}
+              ></textarea>
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Precio Producto</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="S/. 1450.00"
+                value={data.precio}
+                onChange={(e) => handleChange(index, 'precio', e.target.value)}
+              />
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
+
+      <button
+        type="button"
+        className="btn btn-success mt-5"
+        onClick={handleSubmit}
+        disabled={isGenerating} // Deshabilitar el botón mientras se genera el video
+      >
+        {isGenerating ? 'Generando Video ...' : 'Crear Video'}  {/* Cambiar texto según el estado */}
+      </button>
+
+      <div>
+        
+      </div>
+    </div>
+    </>
+  );
+}
+
+Date cuenta que puede tener estas 2 estructuras: 
+
+{
+              producto_doble: true,
+              enlace_imagen_1: data.enlace_imagen_1 ? data.enlace_imagen_1.name : null,
+              texto_1: data.texto_1,
+              precio_1: data.precio_1,
+              enlace_imagen_2: data.enlace_imagen_2 ? data.enlace_imagen_2.name : null,
+              texto_2: data.texto_2,
+              precio_2: data.precio_2,
+            }
+          : {
+              producto_doble: false,
+              enlace_imagen: data.enlace_imagen ? data.enlace_imagen.name : null,
+              texto: data.texto,
+              precio: data.precio,
+            }

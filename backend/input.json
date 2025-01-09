@@ -2,33 +2,19 @@
   "data": [
     {
       "producto_doble": false,
-      "enlace_imagen": "molotov.jpg",
-      "texto": "holas de mar",
-      "precio": "S/. 1234"
-    },
-    {
-      "producto_doble": true,
-      "enlace_imagen_1": "ImagenProducto2.png",
-      "texto_1": "holas de mar 2",
-      "precio_1": "S/. 12343",
-      "enlace_imagen_2": "molotov.jpg",
-      "texto_2": "holas de mar 5",
-      "precio_2": "adfasf"
-    },
-    {
-      "producto_doble": true,
-      "enlace_imagen_1": "ImagenProducto5.jpg",
-      "texto_1": "holas de mar 3",
-      "precio_1": "S/. 123441",
-      "enlace_imagen_2": "ImagenProducto1.png",
-      "texto_2": "holas de mar 6",
-      "precio_2": "asdfsadf"
+      "enlace_imagen": null
     },
     {
       "producto_doble": false,
-      "enlace_imagen": "ImagenProducto7.jpg",
-      "texto": "holas de mar 4",
-      "precio": "S/. 12344123"
+      "enlace_imagen": null
+    },
+    {
+      "producto_doble": false,
+      "enlace_imagen": null
+    },
+    {
+      "producto_doble": false,
+      "enlace_imagen": null
     }
   ]
 }
