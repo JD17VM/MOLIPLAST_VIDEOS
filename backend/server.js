@@ -16,11 +16,16 @@ app.use('/assets', express.static('public/assets'));
 
 // Ruta para recibir los datos del formulario
 app.post('/generate-video', (req, res) => {
-    const inputData = req.body.data; // Aquí estamos accediendo a los datos que se envían desde el frontend
+    const { data: inputData, metadata } = req.body;
 
     // Verificar que inputData sea un array antes de intentar mapearlo
     if (!Array.isArray(inputData)) {
         return res.status(400).send({ message: 'Se esperaba un array de datos en el campo "data"' });
+    }
+
+    // Verificar que metadata exista y tenga nombre_video
+    if (!metadata || !metadata.nombre_video) {
+        return res.status(400).send({ message: 'Se requiere metadata con nombre_video' });
     }
 
     // Mapea los datos al formato esperado por Remotion (asumiendo que cada producto puede ser único o doble)
@@ -44,7 +49,10 @@ app.post('/generate-video', (req, res) => {
                     precio: item.precio,
                 };
             }
-        })
+        }),
+        metadata: {
+            nombre_video: metadata.nombre_video
+        }
     };
 
     // Definir la ruta del archivo JSON
@@ -56,8 +64,9 @@ app.post('/generate-video', (req, res) => {
     console.log('Archivo JSON generado en:', inputPath);
     console.log('Datos contenidos:', formattedData);
 
-    // Comando para ejecutar Remotion y generar el video
-    const command = `cd moliplast_video_plantilla && npx remotion render --props=../input.json Productos ../output/video.mp4`;
+    // Generar nombre del archivo de salida basado en metadata
+    const outputFileName = `${metadata.nombre_video}.mp4`;
+    const command = `cd moliplast_video_plantilla && npx remotion render --props=../input.json Productos ../output/${outputFileName}`;
 
     exec(command, (error, stdout, stderr) => {
         if (error) {
@@ -67,7 +76,10 @@ app.post('/generate-video', (req, res) => {
         if (stderr) console.error(`STDERR: ${stderr}`);
         
         console.log(`STDOUT: ${stdout}`);
-        res.send({ message: 'Video generado con éxito', path: '/output/video.mp4' });
+        res.send({ 
+            message: 'Video generado con éxito', 
+            path: `/output/${outputFileName}` 
+        });
     });
 });
 

@@ -10,6 +10,9 @@ export default function App() {
     { name: '', price: '', file: null },
   ]);
 
+  const [metadata, setMetadata] = useState({
+    nombre_video: ''
+  });
   
 
   const [isGenerating, setIsGenerating] = useState(false);
@@ -18,6 +21,13 @@ export default function App() {
     const updatedFormData = [...formData];
     updatedFormData[index][field] = value;
     setFormData(updatedFormData);
+  };
+
+  const handleMetadataChange = (value) => {
+    setMetadata({
+      ...metadata,
+      nombre_video: value
+    });
   };
 
   const handleFileChange = (index, file, imageNumber) => {
@@ -86,8 +96,16 @@ export default function App() {
           }
       );
 
+       // Crear el objeto final incluyendo metadata
+       const finalData = {
+        data: jsonObjects,
+        metadata: {
+          nombre_video: metadata.nombre_video
+        }
+      };
+
       // Imprimir el JSON en consola para revisarlo
-      console.log("JSON a enviar:", JSON.stringify({ data: jsonObjects }, null, 2));
+      console.log("JSON a enviar:", JSON.stringify(finalData, null, 2));
 
       // Aquí comentaríamos el envío de datos al servidor por ahora
       const response = await fetch('http://localhost:3001/generate-video', {
@@ -95,7 +113,7 @@ export default function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ data: jsonObjects }),
+        body: JSON.stringify(finalData),
       });
 
       // Simulación de respuesta (comentado):
@@ -241,8 +259,14 @@ export default function App() {
           <div class="row">
             <div class="col">
               <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">@</span>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+              <span className="input-group-text" id="basic-addon1">Nombre del video</span>
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  placeholder="Nombre del video" 
+                  value={metadata.nombre_video}
+                  onChange={(e) => handleMetadataChange(e.target.value)}
+                />
               </div>
             </div>
             <div class="col">
