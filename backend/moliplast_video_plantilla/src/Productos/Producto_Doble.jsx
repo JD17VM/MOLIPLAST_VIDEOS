@@ -5,6 +5,8 @@ import styles from '../assets/styles/estilos_producto.module.css'
 
 import imageHelper from '../utils/imageHelper'
 
+const LOCAL_ASSETS = "http://localhost:3001/assets";
+
 export const Producto_Doble = ({ enlace_imagen_1,enlace_imagen_2, texto_1,texto_2, precio_1,precio_2, relativeFrame, fps, index }) => {
 
     const { width: screenWidth, height: screenHeight } = useVideoConfig();
@@ -91,41 +93,6 @@ export const Producto_Doble = ({ enlace_imagen_1,enlace_imagen_2, texto_1,texto_
     const precioOscillationY = createOscillation(12, 0.9); // Oscilación vertical para el precio
     const logoOscillationY = createOscillation(5, 0.6); // Oscilación vertical para el precio
 
-    var imagen_1 = ""
-    if (enlace_imagen_1 == "ImagenProducto1.png") {
-      imagen_1 = imageHelper.ImagenProducto1
-    } else if (enlace_imagen_1 == "ImagenProducto2.png") {
-      imagen_1 = imageHelper.ImagenProducto2
-    } else if (enlace_imagen_1 == "ImagenProducto3.png") {
-      imagen_1 = imageHelper.ImagenProducto3
-    } else if (enlace_imagen_1 == "ImagenProducto4.png") {
-      imagen_1 = imageHelper.ImagenProducto4
-    } else if (enlace_imagen_1 == "ImagenProducto5.jpg") {
-      imagen_1 = imageHelper.ImagenProducto5
-    } else if (enlace_imagen_1 == "ImagenProducto6.jpg") {
-      imagen_1 = imageHelper.ImagenProducto6
-    } else if (enlace_imagen_1 == "ImagenProducto7.jpg") {
-      imagen_1 = imageHelper.ImagenProducto7
-    }
-
-
-    var imagen_2 = ""
-    if (enlace_imagen_2 == "ImagenProducto1.png") {
-      imagen_2 = imageHelper.ImagenProducto1
-    } else if (enlace_imagen_2 == "ImagenProducto2.png") {
-      imagen_2 = imageHelper.ImagenProducto2
-    } else if (enlace_imagen_2 == "ImagenProducto3.png") {
-      imagen_2 = imageHelper.ImagenProducto3
-    } else if (enlace_imagen_2 == "ImagenProducto4.png") {
-      imagen_2 = imageHelper.ImagenProducto4
-    } else if (enlace_imagen_2 == "ImagenProducto5.jpg") {
-      imagen_2 = imageHelper.ImagenProducto5
-    } else if (enlace_imagen_2 == "ImagenProducto6.jpg") {
-      imagen_2 = imageHelper.ImagenProducto6
-    } else if (enlace_imagen_2 == "ImagenProducto7.jpg") {
-      imagen_2 = imageHelper.ImagenProducto7
-    }
-
 
     return(
       <AbsoluteFill style={{
@@ -143,7 +110,7 @@ export const Producto_Doble = ({ enlace_imagen_1,enlace_imagen_2, texto_1,texto_
         <div className={styles.contenedor_2_productos}>
           <div className={styles.producto}>
             <div className={styles.contenedor_imagen} style={{transform: `translateX(${imagenXOffset + imagenOscillationX}px)`,}}>
-                <img src={imagen_1} alt="" />
+                <img src={`${LOCAL_ASSETS}/imagenes/${enlace_imagen_1}`} alt="" />
             </div>
             <div className={styles.contenedor_texto} style={{ transform: `translateY(${textoYOffset + textoOscillationY}px)`,}}>
               <h1>{texto_1}</h1>
@@ -160,7 +127,7 @@ export const Producto_Doble = ({ enlace_imagen_1,enlace_imagen_2, texto_1,texto_
 
           <div className={styles.producto}>
             <div className={styles.contenedor_imagen} style={{transform: `translateX(${imagenXOffset + imagenOscillationX}px)`,}}>
-                <img src={imagen_2} alt="" />
+                <img src={`${LOCAL_ASSETS}/imagenes/${enlace_imagen_2}`} alt="" />
             </div>
             <div className={styles.contenedor_texto} style={{ transform: `translateY(${textoYOffset + textoOscillationY}px)`,}}>
               <h1 style={{textAlign:"end"}}>{texto_2}</h1>

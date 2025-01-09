@@ -99,23 +99,6 @@ const Producto_Unico = ({ enlace_imagen, texto, precio, relativeFrame, fps, inde
   const precioOscillationY = createOscillation(12, 0.9); // Oscilación vertical para el precio
   const logoOscillationY = createOscillation(15, 0.6); // Oscilación vertical para el precio
 
-  var imagen = ""
-  if (enlace_imagen == "ImagenProducto1.png") {
-    imagen = imageHelper.ImagenProducto1
-  } else if (enlace_imagen == "ImagenProducto2.png") {
-    imagen = imageHelper.ImagenProducto2
-  } else if (enlace_imagen == "ImagenProducto3.png") {
-    imagen = imageHelper.ImagenProducto3
-  } else if (enlace_imagen == "ImagenProducto4.png") {
-    imagen = imageHelper.ImagenProducto4
-  } else if (enlace_imagen == "ImagenProducto5.jpg") {
-    imagen = imageHelper.ImagenProducto5
-  } else if (enlace_imagen == "ImagenProducto6.jpg") {
-    imagen = imageHelper.ImagenProducto6
-  } else if (enlace_imagen == "ImagenProducto7.jpg") {
-    imagen = imageHelper.ImagenProducto7
-  }
-
   // Ejemplo simplificado:
   return (
     <AbsoluteFill
@@ -138,7 +121,7 @@ const Producto_Unico = ({ enlace_imagen, texto, precio, relativeFrame, fps, inde
             transform: `translateX(${imagenXOffset + imagenOscillationX}px)`,
           }}
         >
-          <img src={`${LOCAL_ASSETS}/imagenes/Mario.png`} alt="Producto" />
+          <img src={`${LOCAL_ASSETS}/imagenes/${enlace_imagen}`} alt="Producto" />
         </div>
 
         <div className={styles.contenedor_texto}

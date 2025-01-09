@@ -2,33 +2,33 @@
   "data": [
     {
       "producto_doble": false,
-      "enlace_imagen": "ImagenProducto6.jpg",
-      "texto": "CABLE FIBRA OPTICA\nCat 16 12\"",
-      "precio": "S/ 234"
+      "enlace_imagen": "molotov.jpg",
+      "texto": "holas de mar",
+      "precio": "S/. 1234"
     },
     {
       "producto_doble": true,
-      "enlace_imagen_1": "ImagenProducto3.png",
-      "texto_1": "MOTOR DE AGUA\nPw 15 Lt.",
-      "precio_1": "S/ 350",
-      "enlace_imagen_2": "ImagenProducto4.png",
-      "texto_2": "MOTOR DE AGUA\nPw  5 Lt.",
-      "precio_2": "S/ 230"
+      "enlace_imagen_1": "ImagenProducto2.png",
+      "texto_1": "holas de mar 2",
+      "precio_1": "S/. 12343",
+      "enlace_imagen_2": "molotov.jpg",
+      "texto_2": "holas de mar 5",
+      "precio_2": "adfasf"
+    },
+    {
+      "producto_doble": true,
+      "enlace_imagen_1": "ImagenProducto5.jpg",
+      "texto_1": "holas de mar 3",
+      "precio_1": "S/. 123441",
+      "enlace_imagen_2": "ImagenProducto1.png",
+      "texto_2": "holas de mar 6",
+      "precio_2": "asdfsadf"
     },
     {
       "producto_doble": false,
-      "enlace_imagen": "ImagenProducto1.png",
-      "texto": "TANQUE AGUA\n300 Lts.",
-      "precio": "S/ 870"
-    },
-    {
-      "producto_doble": true,
-      "enlace_imagen_1": "ImagenProducto7.jpg",
-      "texto_1": "DETECTA AGUA\n210 PW",
-      "precio_1": "S/ 178",
-      "enlace_imagen_2": "ImagenProducto2.png",
-      "texto_2": "TANQUE AGUA\n120 Lts,",
-      "precio_2": "S/  350"
+      "enlace_imagen": "ImagenProducto7.jpg",
+      "texto": "holas de mar 4",
+      "precio": "S/. 12344123"
     }
   ]
 }
