@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 const PORT = 3001;
 
-app.use('/assets', express.static('public/assets'));
+app.use('/assets', express.static(path.join(__dirname, 'public', 'assets')));
 
 app.use((req, res, next) => {
     res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self';");
@@ -65,7 +65,7 @@ app.post('/generate-video', (req, res) => {
     console.log('Datos contenidos:', formattedData);
 
     const outputFileName = `${metadata.nombre_video}.mp4`;
-    const command = `cd moliplast_video_plantilla && npx remotion render --props=../input.json Productos ../output/${outputFileName}`;
+    const command = `cd backend && cd moliplast_video_plantilla && npx remotion render --props=../input.json Productos ../output/${outputFileName}`;
 
     exec(command, (error, stdout, stderr) => {
         if (error) {

@@ -3,35 +3,41 @@
     {
       "producto_doble": false,
       "enlace_imagen": "ImagenProducto3.png",
-      "texto": "efsdf"
+      "texto": "Este es un nuevo producto",
+      "precio": "S/. 312432"
     },
     {
       "producto_doble": false,
-      "enlace_imagen": "molotov.jpg",
-      "texto": "safd"
-    },
-    {
-      "producto_doble": false,
-      "enlace_imagen": "ImagenProducto5.jpg",
-      "texto": "sadfas"
-    },
-    {
-      "producto_doble": false,
-      "enlace_imagen": "ImagenProducto1.png",
-      "texto": "asdf"
+      "enlace_imagen": "ImagenProducto6.jpg",
+      "texto": "Este es un nuevo producto",
+      "precio": "S/. 12334"
     },
     {
       "producto_doble": false,
       "enlace_imagen": "ImagenProducto5.jpg",
-      "texto": "asdf"
+      "texto": "Este es un nuevo producto",
+      "precio": "S/. 12341234"
     },
     {
       "producto_doble": false,
-      "enlace_imagen": "ImagenProducto4.png",
-      "texto": "sadfa"
+      "enlace_imagen": "ImagenProducto7.jpg",
+      "texto": "Este es un nuevo producto",
+      "precio": "S/. 12334"
+    },
+    {
+      "producto_doble": false,
+      "enlace_imagen": "ImagenProducto7.jpg",
+      "texto": "Este es un nuevo producto",
+      "precio": "S/. 312432"
+    },
+    {
+      "producto_doble": false,
+      "enlace_imagen": "ImagenProducto7.jpg",
+      "texto": "Este es un nuevo producto",
+      "precio": "S/. 12341234"
     }
   ],
   "metadata": {
-    "nombre_video": "estedebefuncar"
+    "nombre_video": "Nuevo_Video"
   }
 }
