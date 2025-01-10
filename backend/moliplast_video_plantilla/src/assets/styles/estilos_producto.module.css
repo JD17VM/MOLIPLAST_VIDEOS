@@ -26,11 +26,14 @@
         justify-content: center;
         align-items: center;
         margin-right: 10px;
+        padding: 0;
     }
 
         .contenedor_imagen > img{
+            padding: 0;
             width: 80%;
             height: 80%;
+            max-height: 950px;
             object-fit: contain;
         }
 
