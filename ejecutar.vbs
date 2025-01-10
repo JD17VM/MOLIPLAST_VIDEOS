@@ -1,4 +1,12 @@
 Set WShell = CreateObject("WScript.Shell")
-strPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName)
+Set fso = CreateObject("Scripting.FileSystemObject")
+strPath = fso.GetParentFolderName(WScript.ScriptFullName)
+
+' Cambiar al directorio correcto
 WShell.CurrentDirectory = strPath
-WShell.Run "cmd /c start /min runner.bat", 0, False
+
+' Abrir el navegador
+WShell.Run "explorer http://localhost:5173", 0, False
+
+' Ejecutar npm start de forma oculta
+WShell.Run "cmd /c npm start", 0, False

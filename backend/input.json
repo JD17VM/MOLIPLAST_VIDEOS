@@ -3,35 +3,35 @@
     {
       "producto_doble": false,
       "enlace_imagen": null,
-      "texto": "aaaaa"
+      "texto": "Esto va a funcar 1"
     },
     {
       "producto_doble": false,
       "enlace_imagen": null,
-      "texto": "adasdadasd"
+      "texto": "Esto va a funcar 2"
     },
     {
       "producto_doble": false,
       "enlace_imagen": null,
-      "texto": "sdafasfd"
+      "texto": "Esto va a funcar 3"
+    },
+    {
+      "producto_doble": false,
+      "enlace_imagen": "ImagenProducto7.jpg",
+      "texto": "Esto va a funcar 4"
     },
     {
       "producto_doble": false,
       "enlace_imagen": null,
-      "texto": "asdfsa"
+      "texto": "Esto va a funcar 5"
     },
     {
       "producto_doble": false,
       "enlace_imagen": null,
-      "texto": "asfd"
-    },
-    {
-      "producto_doble": false,
-      "enlace_imagen": null,
-      "texto": "asdfas"
+      "texto": "Esto va a funcar 6"
     }
   ],
   "metadata": {
-    "nombre_video": "wwww"
+    "nombre_video": "ya_funca"
   }
 }
