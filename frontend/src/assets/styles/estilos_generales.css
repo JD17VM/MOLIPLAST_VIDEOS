@@ -1,0 +1,20 @@
+body{
+    background-color: #010332;
+    
+}
+
+.form-label{
+    font-weight: 700;
+    color:#010332;
+    text-align: start;
+}
+
+.card > div{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group-text{
+    font-weight: 700;
+    color:#010332;
+}

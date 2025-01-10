@@ -6,7 +6,7 @@ export const RemotionRoot = () => {
 
     const fps = 30
     const duracionProductoEnFrames = 13.19 * fps
-    const duracionTotalVideo = Math.floor(duracionProductoEnFrames * 4)
+    const duracionTotalVideo = Math.floor(duracionProductoEnFrames * 6)
 
 
     return (

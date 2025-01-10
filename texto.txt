@@ -1,0 +1,122 @@
+Le agregué la data default y funciona correctamente con la informacion default
+
+A continuación te paso el codigo nuevamente para que lo analices:
+
+
+---- Root.jsx
+
+
+import { Composition } from 'remotion';
+import { Producto_Unico } from './Producto_Unico'; // Ajusta esta importación si está en otra ubicación
+
+export const RemotionRoot = () => {
+    return (
+        <>
+            <Composition
+                id="ProductoUnico" // Este ID debe coincidir con el comando de renderizado
+                component={Producto_Unico}
+                durationInFrames={2000}
+                fps={30}
+                width={1920}
+                height={1080}
+                defaultProps={{
+                  data: [
+                      { enlace_imagen: 'ruta/a/imagen1.jpg', texto: 'Producto 1 Default', precio: 'S/. 100.00' },
+                      { enlace_imagen: 'ruta/a/imagen2.jpg', texto: 'Producto 2 Default', precio: 'S/. 200.00' },
+                      { enlace_imagen: 'ruta/a/imagen3.jpg', texto: 'Producto 3 Default', precio: 'S/. 300.00' },
+                      { enlace_imagen: 'ruta/a/imagen4.jpg', texto: 'Producto 4 Default', precio: 'S/. 400.00' },
+                  ],
+              }} // Datos predeterminados
+            />
+        </>
+    );
+};
+
+
+package.json
+
+{
+  "name": "moliplast_video_plantilla",
+  "version": "1.0.0",
+  "description": "My Remotion video",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@remotion/cli": "4.0.244",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.244",
+    "zod": "3.22.3"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config": "4.0.244",
+    "prettier": "3.3.3",
+    "eslint": "8.56.0"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "upgrade": "remotion upgrade",
+    "lint": "eslint src --ext ts,tsx,js,jsx"
+  },
+  "remotion": {
+    "entry": "src/Root.jsx"
+  }
+}
+
+../server.js
+
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const { exec } = require('child_process'); // Para ejecutar comandos en terminal
+const fs = require('fs'); // <--- IMPORTACIÓN CORRECTA
+const path = require('path'); // <--- Asegúrate de incluir esta línea
+
+const app = express();
+
+app.use(cors());
+app.use(bodyParser.json());
+
+const PORT = 3001;
+
+// Ruta para recibir los datos del formulario
+app.post('/generate-video', (req, res) => {
+    const inputData = req.body;
+
+    // Mapea los datos al formato esperado por Remotion
+    const formattedData = inputData.map((item) => ({
+        enlace_imagen: item.file,
+        texto: item.name,
+        precio: item.price,
+    }));
+
+    const inputPath = path.resolve(__dirname, 'input.json');
+    fs.writeFileSync(inputPath, JSON.stringify(formattedData, null, 2)); // Guarda en formato JSON
+
+    console.log('Archivo JSON generado en:', inputPath);
+    console.log('Datos contenidos:', formattedData);
+
+    const command = `cd moliplast_video_plantilla && npx remotion render --props=${inputPath} ProductoUnico ../output/video.mp4`;
+
+    exec(command, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error generando el video: ${error.message}`);
+            return res.status(500).send({ message: 'Error al generar el video' });
+        }
+        if (stderr) console.error(`STDERR: ${stderr}`);
+        
+        console.log(`STDOUT: ${stdout}`);
+        res.send({ message: 'Video generado con éxito', path: '/output/video.mp4' });
+    });
+});
+
+
+
+// Iniciar el servidor
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+});
+

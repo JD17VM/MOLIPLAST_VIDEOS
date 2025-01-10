@@ -67,6 +67,7 @@
             margin: 0;
             font-size: 8rem;
             font-weight: 800;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
 
@@ -153,6 +154,7 @@
             .contenedor_2_productos > .producto > .contenedor_precio > h2{
                 font-size: 7rem;
                 padding: 0;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
 
         

@@ -2,36 +2,36 @@
   "data": [
     {
       "producto_doble": false,
-      "enlace_imagen": "molotov.jpg",
-      "texto": "Este es el texto producto 1",
-      "precio": "S/. 130.00"
+      "enlace_imagen": "ImagenProducto3.png",
+      "texto": "efsdf"
     },
     {
-      "producto_doble": true,
-      "enlace_imagen_1": "ImagenProducto5.jpg",
-      "texto_1": "Este es el texto producto 2",
-      "precio_1": "S/. 130.00",
-      "enlace_imagen_2": "Mario.png",
-      "texto_2": "Este es el texto producto 3",
-      "precio_2": "S/. 130.00"
+      "producto_doble": false,
+      "enlace_imagen": "molotov.jpg",
+      "texto": "safd"
     },
     {
       "producto_doble": false,
       "enlace_imagen": "ImagenProducto5.jpg",
-      "texto": "Este es el texto producto 4",
-      "precio": "S/. 130.00"
+      "texto": "sadfas"
     },
     {
-      "producto_doble": true,
-      "enlace_imagen_1": "ImagenProducto5.jpg",
-      "texto_1": "Este es el texto producto 5",
-      "precio_1": "S/. 130.00",
-      "enlace_imagen_2": "ImagenProducto7.jpg",
-      "texto_2": "Este es el texto producto 6",
-      "precio_2": "S/. 130.00"
+      "producto_doble": false,
+      "enlace_imagen": "ImagenProducto1.png",
+      "texto": "asdf"
+    },
+    {
+      "producto_doble": false,
+      "enlace_imagen": "ImagenProducto5.jpg",
+      "texto": "asdf"
+    },
+    {
+      "producto_doble": false,
+      "enlace_imagen": "ImagenProducto4.png",
+      "texto": "sadfa"
     }
   ],
-  "metada": {
-    "nombre_video": "video_1"
+  "metadata": {
+    "nombre_video": "estedebefuncar"
   }
 }

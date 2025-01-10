@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import './App.css';
 import imageHelper from './utils/imageHelper';
 
+import './assets/styles/estilos_generales.css';
+
 export default function App() {
   const [formData, setFormData] = useState([
+    { name: '', price: '', file: null },
+    { name: '', price: '', file: null },
     { name: '', price: '', file: null },
     { name: '', price: '', file: null },
     { name: '', price: '', file: null },
@@ -136,20 +140,30 @@ export default function App() {
     <>
       <div className="container" style={{
         width: "100vw",
-        height: "100px"
+        height: "100px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
       }}>
+        <h1 style={{
+        color: "white",
+        fontSize: "2.5rem",
+        fontWeight: "700"
+      }}>GENERADOR DE VIDEOS MOLIPLAST</h1>
         <img style={{
           height: "90%"
         }} src={imageHelper.Logo_Moliplast} alt="" />
       </div>
-      <div className="container mt-4">
-        <div className="row">
+      <div className="container mt-4"> 
+        <div className="row" style={{
+          rowGap:"2rem",
+        }}>
           {formData.map((data, index) => (
-            <div className="col-md-3" key={index}>
+            <div className="col-md-4" key={index}>
               <div className="card" style={{ width: 'auto' }}>
                 {/* Selector para cambiar entre Único y Doble */}
                 <div className="mb-3">
-                  <label className="form-label">Tipo de Producto</label>
+                  <label className="form-label" >Tipo de Producto</label>
                   <select
                     className="form-select"
                     value={data.producto_doble ? 'doble' : 'unico'}
@@ -255,10 +269,11 @@ export default function App() {
           ))}
         </div>
 
-        <div className="container">
+        <div className="container mt-4">
           <div class="row">
-            <div class="col">
-              <div class="input-group mb-3">
+              <div class="input-group" style={{
+                width: "70%",
+              }}>
               <span className="input-group-text" id="basic-addon1">Nombre del video</span>
                 <input 
                   type="text" 
@@ -267,18 +282,20 @@ export default function App() {
                   value={metadata.nombre_video}
                   onChange={(e) => handleMetadataChange(e.target.value)}
                 />
-              </div>
             </div>
-            <div class="col">
               <button
                 type="button"
-                className="btn btn-success mt-5"
+                className="btn btn-success"
                 onClick={handleSubmit}
                 disabled={isGenerating} // Deshabilitar el botón mientras se genera el video
+                style={{
+                  width: "30%",
+                  backgroundColor: "#3C45FC",
+                  fontWeight: "700"
+                }}
               >
                 {isGenerating ? 'Generando Video ...' : 'Crear Video'}  {/* Cambiar texto según el estado */}
               </button>
-            </div>
           </div>
 
 
