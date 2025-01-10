@@ -2,42 +2,36 @@
   "data": [
     {
       "producto_doble": false,
-      "enlace_imagen": "ImagenProducto3.png",
-      "texto": "Este es un nuevo producto",
-      "precio": "S/. 312432"
+      "enlace_imagen": null,
+      "texto": "aaaaa"
     },
     {
       "producto_doble": false,
-      "enlace_imagen": "ImagenProducto6.jpg",
-      "texto": "Este es un nuevo producto",
-      "precio": "S/. 12334"
+      "enlace_imagen": null,
+      "texto": "adasdadasd"
     },
     {
       "producto_doble": false,
-      "enlace_imagen": "ImagenProducto5.jpg",
-      "texto": "Este es un nuevo producto",
-      "precio": "S/. 12341234"
+      "enlace_imagen": null,
+      "texto": "sdafasfd"
     },
     {
       "producto_doble": false,
-      "enlace_imagen": "ImagenProducto7.jpg",
-      "texto": "Este es un nuevo producto",
-      "precio": "S/. 12334"
+      "enlace_imagen": null,
+      "texto": "asdfsa"
     },
     {
       "producto_doble": false,
-      "enlace_imagen": "ImagenProducto7.jpg",
-      "texto": "Este es un nuevo producto",
-      "precio": "S/. 312432"
+      "enlace_imagen": null,
+      "texto": "asfd"
     },
     {
       "producto_doble": false,
-      "enlace_imagen": "ImagenProducto7.jpg",
-      "texto": "Este es un nuevo producto",
-      "precio": "S/. 12341234"
+      "enlace_imagen": null,
+      "texto": "asdfas"
     }
   ],
   "metadata": {
-    "nombre_video": "Nuevo_Video"
+    "nombre_video": "wwww"
   }
 }
