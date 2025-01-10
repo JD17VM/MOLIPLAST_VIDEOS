@@ -2,36 +2,30 @@
   "data": [
     {
       "producto_doble": false,
-      "enlace_imagen": null,
-      "texto": "Esto va a funcar 1"
+      "enlace_imagen": null
     },
     {
       "producto_doble": false,
-      "enlace_imagen": null,
-      "texto": "Esto va a funcar 2"
+      "enlace_imagen": null
     },
     {
       "producto_doble": false,
-      "enlace_imagen": null,
-      "texto": "Esto va a funcar 3"
+      "enlace_imagen": null
     },
     {
       "producto_doble": false,
-      "enlace_imagen": "ImagenProducto7.jpg",
-      "texto": "Esto va a funcar 4"
+      "enlace_imagen": null
     },
     {
       "producto_doble": false,
-      "enlace_imagen": null,
-      "texto": "Esto va a funcar 5"
+      "enlace_imagen": null
     },
     {
       "producto_doble": false,
-      "enlace_imagen": null,
-      "texto": "Esto va a funcar 6"
+      "enlace_imagen": null
     }
   ],
   "metadata": {
-    "nombre_video": "ya_funca"
+    "nombre_video": "e"
   }
 }
